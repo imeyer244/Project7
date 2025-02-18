@@ -54,7 +54,7 @@ public class GackWorld extends World {
 		new Witch("Barbara", offices, 3, pond);
 		new Wizard("Elvee", offices, 1, chamberOfWizards);
 		// create new witch
-		new Witch("Jacob", lund, 2, lund);
+		new Witch("Jacob", lund, 2, pond);
 		
 		
 		lounge.gain(new Thing("Karl's glasses"));
