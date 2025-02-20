@@ -107,20 +107,15 @@ public class Person {
 	}
 	
 	public void give(Thing thing, Person recipient) {
-		Person owner = thing.getOwner();
-		if (recipient == owner) {
-			Utility.displayMessage(recipient + " already has " + thing);
+		if (!equals(thing.getOwner())) {
+			Utility.displayMessage(this + " doesn't have " + thing);
 		} else {
-			if (thing.isOwned()) {
-				// Person owner = thing.getOwner();
-				owner.lose(thing);
-			} else {
-				Utility.displayMessage(this + " doesn't have " + thing);
-			}
-			// Person owner = thing.getOwner();
+			thing.becomeUnowned();
+			this.possessions.remove(thing);
 			thing.setOwner(recipient);
 			recipient.possessions.add(thing);
-			say("I give " + thing);
+			this.say("I give " + thing + " to " + recipient);
+			
 		}
 	}
 	

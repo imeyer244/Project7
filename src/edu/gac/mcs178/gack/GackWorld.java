@@ -57,7 +57,9 @@ public class GackWorld extends World {
 		lounge.gain(new Thing("Karl's glasses"));
 		
 		library.gain(new Scroll("Scroll of Enlightenment"));
+		// add Late Lab Report to dormitory as a scroll
 		dormitory.gain(new Scroll("Late Lab Report"));
+		
 		String[] someTitles = {"War and Peace", "Iliad", "Collected Works of Rilke"};
 		for (String title : someTitles) {
 			library.gain(new Scroll(title));
