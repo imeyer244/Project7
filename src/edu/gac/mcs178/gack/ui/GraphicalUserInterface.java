@@ -35,11 +35,14 @@ public class GraphicalUserInterface extends JFrame implements MessageDisplay {
 	private JComboBox dropJComboBox;
 	private JComboBox readJComboBox;
 	private JComboBox giveJComboBox;
+	private JComboBox eatJComboBox;
+
 	private GoActionListener goActionListener;
 	private TakeActionListener takeActionListener;
 	private DropActionListener dropActionListener;
 	private ReadActionListener readActionListener;
 	private GiveActionListener giveActionListener;
+	private EatActionListener eatActionListener;
 	
 	public GraphicalUserInterface(Person player) {
 		super();
@@ -58,7 +61,7 @@ public class GraphicalUserInterface extends JFrame implements MessageDisplay {
 		add(textScrollPane, BorderLayout.CENTER);
 		
 		// controlPanel contains all of the controls for the game
-		JPanel controlPanel = new JPanel(new GridLayout(3, 3));
+		JPanel controlPanel = new JPanel(new GridLayout(4, 4));
 		add(controlPanel, BorderLayout.NORTH);
 		
 		// Look around button
@@ -133,6 +136,13 @@ public class GraphicalUserInterface extends JFrame implements MessageDisplay {
 		dropActionListener = new DropActionListener(this, player, dropJComboBox);
 		dropJComboBox.addActionListener(dropActionListener);
 		controlPanel.add(dropJComboBox);
+		
+		// Eat combo box
+		
+		eatJComboBox = new JComboBox();
+		eatActionListener = new EatActionListener(this, player, eatJComboBox);
+		eatJComboBox.addActionListener(eatActionListener);
+		controlPanel.add(eatJComboBox);
 	}
 	
 	public void playTurn() {
@@ -147,6 +157,7 @@ public class GraphicalUserInterface extends JFrame implements MessageDisplay {
 		dropActionListener.updateJComboBox();
 		readActionListener.updateJComboBox();
 		giveActionListener.updateJComboBox();
+		eatActionListener.updateJComboBox();
 		enableJComboListeners(true);
 	}
 	
@@ -156,6 +167,7 @@ public class GraphicalUserInterface extends JFrame implements MessageDisplay {
 		dropActionListener.setEnabled(b);
 		readActionListener.setEnabled(b);
 		giveActionListener.setEnabled(b);
+		eatActionListener.setEnabled(b);
 	}
 	
 	public void displayMessage(String text) {

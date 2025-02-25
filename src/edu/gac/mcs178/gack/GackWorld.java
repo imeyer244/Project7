@@ -38,6 +38,7 @@ public class GackWorld extends World {
 		// Make lund a new neighbor for the dormitory in the “northwest” direction
 		dormitory.addNewNeighbor("northwest", lund);
 		lund.addNewNeighbor("southeast", dormitory);
+		dormitory.addNewNeighbor("northeast", foodService);
 		
 		library.addNewNeighbor("east", library);
 		library.addNewNeighbor("south", goodShipOlin);
@@ -62,6 +63,7 @@ public class GackWorld extends World {
 		library.gain(new Scroll("Scroll of Enlightenment"));
 		// add Late Lab Report to dormitory as a scroll
 		dormitory.gain(new Scroll("Late Lab Report"));
+		foodService.gain(new Thing("chocolate"));
 		
 		String[] someTitles = {"War and Peace", "Iliad", "Collected Works of Rilke"};
 		for (String title : someTitles) {

@@ -119,6 +119,21 @@ public class Person {
 		}
 	}
 	
+	public void eat(Thing thing) {
+		if (!equals(thing.getOwner())) {
+			Utility.displayMessage(this + " doesn't have " + thing);
+		}else {
+			if (thing.getName() == "chocolate") {
+				thing.beEaten();
+				possessions.remove(thing);
+				say("Yummy, this " + thing + " is tasty.");
+			}else {
+				Utility.displayMessage(this + " can't eat " + thing);
+			}
+			
+		}
+	}
+	
 	public void lose(Thing thing) {
 		if (!equals(thing.getOwner())) {
 			Utility.displayMessage(this + " doesn't have " + thing);

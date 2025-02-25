@@ -23,6 +23,10 @@ public class Thing {
 		owner = null;
 	}
 	
+	public void beEaten() {
+		owner = null;
+	}
+	
 	@Override
 	public String toString() {
 		return name;
