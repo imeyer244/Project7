@@ -110,9 +110,13 @@ public class Person {
 		if (!equals(thing.getOwner())) {
 			Utility.displayMessage(this + " doesn't have " + thing);
 		} else {
+			// make thing's owner null
 			thing.becomeUnowned();
-			this.possessions.remove(thing);
+			// remove thing from owner's possessions
+			possessions.remove(thing);
+			// set the new owner of the thing to the person receiving it
 			thing.setOwner(recipient);
+			// add the thing to the new owner's possessions
 			recipient.possessions.add(thing);
 			this.say("I give " + thing + " to " + recipient);
 			
@@ -123,11 +127,19 @@ public class Person {
 		if (!equals(thing.getOwner())) {
 			Utility.displayMessage(this + " doesn't have " + thing);
 		}else {
+			// check to make sure that the thing being eaten is chocolate
 			if (thing.getName() == "chocolate") {
+				// call beEaten to make the object's owner null
 				thing.beEaten();
+				// remove thing from owner's possessions
 				possessions.remove(thing);
+				// remove the thing from the place so that it cannot be grabbed again
+				place.lose(thing);
 				say("Yummy, this " + thing + " is tasty.");
-			}else {
+			}
+			// if the person is trying to eat something other than chocolate then display
+			// message telling them they can't eat that thing
+			else {
 				Utility.displayMessage(this + " can't eat " + thing);
 			}
 			
